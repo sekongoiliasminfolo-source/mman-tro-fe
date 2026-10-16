@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Commandez les plats traditionnels ivoiriens de M'man trô-fê à Yopougon Ananerai.">
+  <title>M'man trô-fê | Restaurant</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8ef;
+      color: #35251c;
+    }
+    header {
+      text-align: center;
+      background: #fff;
+      padding: 24px 15px;
+      border-bottom: 3px solid #e87926;
+    }
+    .logo {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #e87926;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 46px;
+    }
+    header h1 {
+      margin: 12px 0 5px;
+      color: #b94c12;
+      font-family: Georgia, serif;
+      font-style: italic;
+    }
+    header p { margin: 6px 0; color: #705b4d; }
+    .hero { text-align: center; padding: 22px 15px 10px; }
+    .hero h2 { color: #b94c12; margin-bottom: 8px; }
+    .plats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      padding: 15px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .plat {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px #00000012;
+    }
+    .plat img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+    .details { padding: 15px; }
+    .details h3 { margin: 0 0 8px; }
+    .details p { line-height: 1.45; }
+    .prix { color: #bd5014; font-weight: bold; font-size: 19px; }
+    button {
+      background: #d9651d;
+      color: white;
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 14px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover { background: #a9430e; }
+    .details button { width: 100%; margin-top: 8px; }
+    #panier {
+      max-width: 760px;
+      margin: 25px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px #00000012;
+    }
+    #panier h2 { color: #b94c12; }
+    .ligne-panier {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+    }
+    .ligne-panier p { margin: 5px 0 0; }
+    .quantite { display: flex; align-items: center; gap: 7px; }
+    .quantite button { padding: 6px 10px; }
+    .supprimer { background: #777; }
+    .total { font-size: 20px; font-weight: bold; margin: 20px 0; }
+    .commande { width: 100%; background: #218838; }
+    .adresse { text-align: center; padding: 20px; line-height: 1.7; }
+    footer { background: #3b281e; color: white; text-align: center; padding: 18px; }
+    @media (max-width: 480px) {
+      .plats { grid-template-columns: 1fr; }
+      #panier { margin: 15px; }
+      .ligne-panier { align-items: flex-start; }
+      .quantite { gap: 5px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" aria-label="Logo du restaurant">🍲</div>
+    <h1>M'man trô-fê</h1>
+    <p>La tradition ivoirienne dans votre assiette ❤️</p>
+  </header>
+
+  <section class="hero">
+    <h2>Bienvenue chez M'man trô-fê !</h2>
+    <p>Choisissez vos plats préférés et commandez facilement.</p>
+  </section>
+
+  <main class="plats">
+    <article class="plat">
+      <img src="images/foutou-sauce-graine.jpg" alt="Foutou accompagné de sauce graine">
+      <div class="details">
+        <h3>Foutou sauce graine</h3>
+        <p>Un plat traditionnel généreux et savoureux.</p>
+        <p class="prix">1 000 F CFA</p>
+        <button onclick="ajouter('Foutou sauce graine', 1000)">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article class="plat">
+      <img src="images/placali-sauce.jpg" alt="Placali accompagné de sauce">
+      <div class="details">
+        <h3>Placali avec sauce</h3>
+        <p>Placali accompagné de sa sauce traditionnelle.</p>
+        <p class="prix">1 000 F CFA</p>
+        <button onclick="ajouter('Placali avec sauce', 1000)">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article class="plat">
+      <img src="images/tchepe.jpg" alt="Tchèpe avec ses accompagnements">
+      <div class="details">
+        <h3>Tchèpe</h3>
+        <p>Riz cuisiné avec ses accompagnements.</p>
+        <p class="prix">1 000 F CFA</p>
+        <button onclick="ajouter('Tchèpe', 1000)">Ajouter au panier</button>
+      </div>
+    </article>
+
+    <article class="plat">
+      <img src="images/sauce-cope.jpg" alt="Sauce côpê traditionnelle">
+      <div class="details">
+        <h3>Sauce côpê</h3>
+        <p>La sauce gombo traditionnelle.</p>
+        <p class="prix">1 000 F CFA</p>
+        <button onclick="ajouter('Sauce côpê', 1000)">Ajouter au panier</button>
+      </div>
+    </article>
+  </main>
+
+  <section id="panier">
+    <h2>🛒 Mon panier (<span id="nombre">0</span>)</h2>
+    <div id="contenu-panier"><p>Votre panier est vide.</p></div>
+    <p class="total">Total : <span id="total">0</span> F CFA</p>
+    <button class="commande" onclick="commander()">Commander sur WhatsApp</button>
+  </section>
+
+  <section class="adresse">
+    <h3>📍 Nous trouver</h3>
+    <p>Yopougon Ananerai, juste derrière la pharmacie Alicia.</p>
+    <p>🕗 Du lundi au vendredi, de 8 h à 19 h.</p>
+    <p>📞 07 47 29 61 32</p>
+  </section>
+
+  <footer>
+    <p>© M'man trô-fê - Tous droits réservés</p>
+    <p>Merci de soutenir la cuisine ivoirienne ❤️</p>
+  </footer>
+
+  <script>
+    let panier = [];
+
+    function ajouter(nom, prix) {
+      let plat = panier.find(p => p.nom === nom);
+      if (plat) {
+        plat.quantite++;
+      } else {
+        panier.push({ nom: nom, prix: prix, quantite: 1 });
+      }
+      afficherPanier();
+    }
+
+    function modifierQuantite(nom, variation) {
+      let plat = panier.find(p => p.nom === nom);
+      if (plat) {
+        plat.quantite += variation;
+        if (plat.quantite <= 0) {
+          panier = panier.filter(p => p.nom !== nom);
+        }
+      }
+      afficherPanier();
+    }
+
+    function supprimer(nom) {
+      panier = panier.filter(p => p.nom !== nom);
+      afficherPanier();
+    }
+
+    function afficherPanier() {
+      let contenu = document.getElementById("contenu-panier");
+      let total = 0;
+      let nombre = 0;
+      contenu.innerHTML = "";
+
+      if (panier.length === 0) {
+        contenu.innerHTML = "<p>Votre panier est vide.</p>";
+      }
+
+      panier.forEach(plat => {
+        let sousTotal = plat.prix * plat.quantite;
+        total += sousTotal;
+        nombre += plat.quantite;
+
+        let ligne = document.createElement("div");
+        ligne.className = "ligne-panier";
+
+        let infos = document.createElement("div");
+        let nom = document.createElement("strong");
+        nom.textContent = plat.nom;
+        let prix = document.createElement("p");
+        prix.textContent = sousTotal.toLocaleString("fr-FR") + " F CFA";
+        infos.append(nom, prix);
+
+        let commandes = document.createElement("div");
+        commandes.className = "quantite";
+
+        let moins = document.createElement("button");
+        moins.textContent = "−";
+        moins.setAttribute("aria-label", "Retirer un plat");
+        moins.onclick = () => modifierQuantite(plat.nom, -1);
+
+        let qte = document.createElement("span");
+        qte.textContent = plat.quantite;
+
+        let plus = document.createElement("button");
+        plus.textContent = "+";
+        plus.setAttribute("aria-label", "Ajouter un plat");
+        plus.onclick = () => modifierQuantite(plat.nom, 1);
+
+        let enlever = document.createElement("button");
+        enlever.className = "supprimer";
+        enlever.textContent = "×";
+        enlever.setAttribute("aria-label", "Supprimer ce plat");
+        enlever.onclick = () => supprimer(plat.nom);
+
+        commandes.append(moins, qte, plus, enlever);
+        ligne.append(infos, commandes);
+        contenu.appendChild(ligne);
+      });
+
+      document.getElementById("nombre").textContent = nombre;
+      document.getElementById("total").textContent = total.toLocaleString("fr-FR");
+    }
+
+    function commander() {
+      if (panier.length === 0) {
+        alert("Ajoutez d'abord un plat à votre panier.");
+        return;
+      }
+
+      let message = "Bonjour M'man trô-fê ! Je souhaite commander :\n\n";
+      let total = 0;
+
+      panier.forEach(plat => {
+        message += plat.nom + " x " + plat.quantite + " = "
+          + (plat.prix * plat.quantite).toLocaleString("fr-FR") + " F CFA\n";
+        total += plat.prix * plat.quantite;
+      });
+
+      message += "\nTotal : " + total.toLocaleString("fr-FR") + " F CFA";
+      message += "\nMerci de me confirmer ma commande.";
+
+      let telephone = "2250747296132";
+      let url = "https://wa.me/" + telephone + "?text=" + encodeURIComponent(message);
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
